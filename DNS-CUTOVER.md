@@ -2,7 +2,7 @@
 
 The cleaned site is deployed in [south-dotcom/southvalue.com](https://github.com/south-dotcom/southvalue.com). GitHub Pages serves `main` → `/docs`. The first deployment succeeded, and `www.southvalue.com` is saved as the custom domain.
 
-**Pending: update OVH DNS, then enable HTTPS in GitHub Pages.** The old public DNS records were checked on 28 October 2026:
+**OVH DNS updated and verified on 28 October 2026. GitHub has requested the TLS certificate; HTTPS enforcement remains pending until issuance completes.** Both OVH authoritative servers and the Google/Cloudflare public resolvers return the intended records. The cleaned page and static assets are served correctly by the GitHub host, and the bare domain redirects to `www`. Some resolvers still cache the previous records. The steps below remain as a record of the migration. The old public DNS records were checked on 28 October 2026:
 
 - Nameservers: `dns109.ovh.net` and `ns109.ovh.net` (keep these).
 - `southvalue.com` A: `51.15.191.141`.
