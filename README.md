@@ -2,7 +2,7 @@
 
 The simplified site is in **`docs/`**. Edit `docs/index.html` to change the page, its inline CSS, or its small navigation script. Images and the two used font weights are self-hosted in `docs/assets/`. No build, package manager, framework, or external runtime is required.
 
-`original/` preserves the public page and 42 assets downloaded from https://www.southvalue.com/ on 28 October 2026. It is an archive, not the publishing source. Some unused font and parallax URLs on the old server returned HTML instead of the expected asset; the new site uses only validated images and fonts. The original HTML includes a PHP redirect; GitHub Pages does not execute PHP, so it is omitted from the new page.
+The local `original/` folder (not published in this repository) preserves the public page and 42 assets downloaded from https://www.southvalue.com/ on 28 October 2026. It is an archive, not the publishing source. Some unused font and parallax URLs on the old server returned HTML instead of the expected asset; the new site uses only validated images and fonts. The original HTML includes a PHP redirect; GitHub Pages does not execute PHP, so it is omitted from the new page.
 
 ## What changed
 
@@ -24,17 +24,15 @@ python3 -m http.server 8000 --bind 127.0.0.1
 
 Open http://127.0.0.1:8000/docs/ .
 
-## Publish to GitHub Pages
+## Publication status — 28 October 2026
 
-Target account: **south-dotcom**. Suggested repository: **southvalue.com**.
+Repository: [south-dotcom/southvalue.com](https://github.com/south-dotcom/southvalue.com).
 
-1. Create the repository and upload this project's source, retaining the `docs/` folder structure.
-2. Under **Settings → Pages**, select **Deploy from a branch**, then **main**, then **/docs**, and save.
-3. For a GitHub-address preview before custom-domain cutover, temporarily remove `docs/CNAME` and open the Pages URL shown by GitHub. Restore `docs/CNAME` when adding the custom domain. All asset URLs are relative, so the page also works under a repository subpath.
-4. Verify ownership of `southvalue.com` under the account's Pages settings, using the TXT record GitHub provides.
-5. Set the repository's **Custom domain** to `www.southvalue.com`. `docs/CNAME` already contains that name.
-6. Only after GitHub has accepted the custom domain, change DNS as below. Keep the old host available until the new site is verified.
-7. Enable **Enforce HTTPS** when GitHub makes it available, then verify both domain variants and the navigation/images on the published site.
+GitHub Pages is enabled from **main → /docs**. The first deployment succeeded and the live GitHub-address page was checked, including all images, fonts, navigation, and the absence of external CSS/JS libraries. **www.southvalue.com** is saved as the custom domain, and `docs/CNAME` matches it.
+
+**Remaining: update the domain's OVH DNS, wait for GitHub's DNS check and certificate, then enable Enforce HTTPS in the repository's Pages settings.** Until DNS changes, the custom domain still serves the old host. The GitHub-address URL may redirect to that custom domain.
+
+In OVH's DNS zone for `southvalue.com`, replace the current apex A record `51.15.191.141` with the four A records below. Change the current `www` CNAME target from `southvalue.com.` to `south-dotcom.github.io.`. For root A records, leave OVH's subdomain field empty. Keep nameservers `dns109.ovh.net` and `ns109.ovh.net`.
 
 ## DNS cutover
 
@@ -57,4 +55,4 @@ Official instructions checked on 28 October 2026:
 
 ## Validation
 
-Desktop layout and 390-pixel mobile layout were inspected in a browser. All eight inline images and the hero background load locally. The mobile menu opens and closes after selecting Contact; all section anchors have matching targets. There are no external stylesheets, scripts, or font requests. Deployment and DNS cutover must be confirmed separately after publication.
+Desktop layout and 390-pixel mobile layout were inspected in a browser. All eight inline images and the hero background load locally. The mobile menu opens and closes after selecting Contact; all section anchors have matching targets. There are no external stylesheets, scripts, or font requests. The first GitHub Pages deployment also passed browser checks; DNS cutover and custom-domain HTTPS remain pending.
