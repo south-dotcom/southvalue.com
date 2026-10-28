@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="South Value is a European IT consulting services company, supporting application development, SAP, cloud, virtualization, and CRM solutions.">
+  <title>South Value - IT Consulting</title>
+  <style>
+    @font-face { font-family: Lato; font-style: normal; font-weight: 300; font-display: swap; src: url("assets/fonts/lato-light.ttf") format("truetype"); }
+    @font-face { font-family: Lato; font-style: normal; font-weight: 700; font-display: swap; src: url("assets/fonts/lato-bold.ttf") format("truetype"); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 50px; }
+    body { margin: 0; color: #666; background: #fff; font: 300 14px/1.42857143 Lato, sans-serif; }
+    h1, h2, h3, .tagline { margin: 0 0 30px; font-family: Montserrat, sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: 1px; text-transform: uppercase; }
+    h2 { font-size: 40px; }
+    p { margin: 0 0 20px; font-size: 16px; line-height: 1.6; }
+    b, strong { font-weight: 700; }
+    a { color: #67b0d1; text-decoration: none; }
+    a:hover { color: #176e61; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #176e61; outline-offset: 4px; }
+    img { max-width: 100%; height: auto; }
+    .container { width: 100%; margin: auto; padding: 0 15px; }
+    .site-nav { position: fixed; inset: 0 0 auto; z-index: 1000; padding: 20px 0; transition: background .3s, padding .3s; }
+    .site-nav .container { display: flex; justify-content: space-between; align-items: flex-start; }
+    .brand { padding: 5px 15px; color: #fff; font: 700 20px/40px Montserrat, sans-serif; letter-spacing: 1px; white-space: nowrap; }
+    .brand:hover { color: #fff; }
+    .nav-links { display: flex; list-style: none; margin: 0; padding: 0; background: #ffffff66; }
+    .nav-links a { display: block; padding: 15px; color: #444; font-size: 12px; line-height: 20px; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; }
+    .nav-links a:hover, .nav-links a[aria-current] { background: #ffffff33; }
+    .site-nav.scrolled { padding: 0; background: #67b0d1; border-bottom: 1px solid #ffffff4d; }
+    .scrolled .nav-links { background: transparent; }
+    .scrolled .nav-links a { color: #fff; }
+    .menu-toggle { display: none; }
+    .intro { min-height: 100vh; padding: 20% 15px 40px; text-align: center; background: url("assets/images/bg1.jpg") no-repeat top center; }
+    .intro h1 { color: #fff; font-size: 60px; line-height: 1; text-shadow: -1px 0 1px #000; }
+    .tagline { color: #fff; font-size: 18px; text-shadow: -1px 1px 1px #000; }
+    .circle { display: inline-flex; align-items: center; justify-content: center; width: 70px; height: 70px; margin-top: 15px; color: #fff; border: 2px solid #fff; border-radius: 50%; }
+    .circle:hover { color: #fff; background: #ffffff1a; }
+    .chevron { display: inline-block; width: 15px; height: 15px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
+    .double-chevron { position: relative; margin-top: -8px; }
+    .double-chevron::after { content: ""; position: absolute; inset: 7px -9px -9px 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; }
+    .up { transform: rotate(225deg); margin-top: 8px; }
+    .home-section { padding: 110px 0; text-align: center; }
+    .gray { background: #f8f8f8; }
+    .section-heading .chevron { width: 14px; height: 14px; margin: 0 0 24px; }
+    .divider { width: calc(100% / 6 - 30px); min-width: 100px; margin: 10px auto 50px; border: 0; border-top: 1px solid #eee; }
+    .about-statement { margin: 0 -15px 30px; font-size: 30px; }
+    .services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 -15px; }
+    .service { padding: 0 15px; }
+    .service img { display: block; margin: 0 auto 20px; width: 48px; height: 48px; }
+    .service h3 { font-size: 14px; }
+    .partner { display: grid; grid-template-columns: 1fr 2fr; margin: 0 -15px; }
+    .partner > * { padding: 0 15px; }
+    .partner img { display: block; }
+    .contact-heading { font-size: 24px; }
+    .contact-heading a { color: inherit; }
+    footer { padding: 50px 0; text-align: center; color: #f8f8f8; background: #67b0d1; }
+    footer .circle { margin-bottom: 30px; }
+    @media (min-width: 768px) { .container { width: 750px; } }
+    @media (min-width: 992px) { .container { width: 970px; } }
+    @media (min-width: 1200px) { .container { width: 1170px; } }
+    @media (max-width: 1199px) { .divider { width: 100%; } }
+    @media (max-width: 767px) {
+      .site-nav { padding: 0; background: #67b0d1; }
+      .site-nav .container { flex-wrap: wrap; align-items: center; }
+      .brand { padding-left: 0; }
+      .nav-links { flex-basis: 100%; flex-wrap: wrap; background: transparent; }
+      .nav-links a { color: #fff; padding: 12px; }
+      .js .menu-toggle { display: block; padding: 8px; border: 1px solid #ffffff80; background: transparent; color: #fff; font: inherit; cursor: pointer; }
+      .js .nav-links { display: none; }
+      .js .nav-links.open { display: flex; }
+      .intro { padding-top: max(140px, 20%); }
+      .intro h1 { font-size: clamp(32px, 7.5vw, 56px); line-height: 1.1; }
+      .tagline { font-size: 16px; }
+      .home-section { padding: 80px 0; }
+      h2 { font-size: 34px; }
+      .about-statement { margin-inline: 0; font-size: 26px; }
+      .services, .partner { grid-template-columns: 1fr; }
+      .service { margin-bottom: 30px; }
+      .service:last-child { margin-bottom: 0; }
+      .partner img { max-width: 360px; width: 100%; margin: 0 auto 25px; }
+      .partner { margin-bottom: 30px; }
+      .contact-heading { font-size: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .site-nav { transition: none; } }
+  </style>
+</head>
+<body id="page-top">
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <a class="brand" href="#intro">SOUTH VALUE</a>
+      <button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false">Menu</button>
+      <ul class="nav-links" id="navigation">
+        <li><a href="#intro" aria-current="location">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#service">Service</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://southvalue.has-jobs.com/">Career</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section id="intro" class="intro" aria-labelledby="welcome">
+      <h1 id="welcome">Welcome to <span>South Value</span></h1>
+      <p class="tagline">We are a European consulting services company</p>
+      <a class="circle" href="#service" aria-label="Explore our services"><span class="chevron double-chevron" aria-hidden="true"></span></a>
+    </section>
+    <section id="about" class="home-section">
+      <div class="container">
+        <header class="section-heading"><h2>About us</h2><span class="chevron" aria-hidden="true"></span></header>
+        <hr class="divider">
+        <h3 class="about-statement">Our IT Experts and business professionals are helping clients innovate across all phases of the IT lifecycle.</h3>
+      </div>
+    </section>
+    <section id="service" class="home-section gray">
+      <div class="container">
+        <header class="section-heading"><h2>Our Services</h2><span class="chevron" aria-hidden="true"></span></header>
+        <hr class="divider">
+        <div class="services">
+        <article class="service">
+          <img src="assets/images/service-icon-1.png" width="48" height="48" alt="" loading="lazy">
+          <h3>Application Development and Management / MIDDLEWARE</h3>
+          <p>South Value is helping clients innovate across all phases of the application lifecycle. Our portfolio of Application Development and Management services combine deep industry expertise and technical knowledge. Our experts can support you with the implementation and management of your <b>TIBCO Technology</b> and <b>IBM WebSphere Projects.</b></p>
+        </article>
+        <article class="service">
+          <img src="assets/images/service-icon-2.png" width="48" height="48" alt="" loading="lazy">
+          <h3>SAP Solutions</h3>
+          <p>SAP is an integrated software system (bring the different software systems of an individual company together into one system) which can incorporate all the functions (modules) of a business into one system by solving data sharing problem between departments in real time. Our experts were directly involved in <b>many projects involving SAP implementation and customizing.</b></p>
+        </article>
+        <article class="service">
+          <img src="assets/images/service-icon-4.png" width="48" height="48" alt="" loading="lazy">
+          <h3>Cloud and Virtualization Solutions</h3>
+          <p>Server virtualization is the latest major technology trend in many companies and data centers. Virtualization solves the problem of the low utilization of single servers. Using virtualization allows IT departments to<b> increase their server utilization up to 80%. </b>Our experts have been working directly for major global providers of virtualization technology.</p>
+        </article>
+        <article class="service">
+          <img src="assets/images/service-icon-3.png" width="48" height="48" alt="" loading="lazy">
+          <h3>CRM / Salesforce Solutions</h3>
+          <p>Customer relationship management (CRM) allows businesses to manage business relationships and the data and information associated with them. Essentially, a CRM system helps businesses <b>manage customer data and interactions, automates sales, marketing, and customer support activities</b>, as well as manages relationships with vendors, partners, and employees.</p>
+        </article>
+        </div>
+      </div>
+    </section>
+    <section id="partners" class="home-section gray">
+      <div class="container">
+        <header class="section-heading"><h2>Strategic Partners</h2><span class="chevron" aria-hidden="true"></span></header>
+        <hr class="divider">
+        <article class="partner">
+          <div><img src="assets/images/mapr.png" alt="MapR" loading="lazy"></div>
+          <p><b>MapR</b> delivers on the promise of Hadoop with a proven, enterprise-grade platform that supports a broad set of mission-critical and real-time production uses. MapR brings unprecedented dependability, ease-of-use and world-record speed to Hadoop, NoSQL, database and streaming applications in one unified Big Data platform. MapR is used across financial services, retail, media, healthcare, manufacturing, telecommunications and government organizations as well as by leading Fortune 100 and Web 2.0 companies. <a href="https://mapr.com/partners/partner/southvalue/">MapR Partner Page</a></p>
+        </article>
+        <article class="partner">
+          <div><img src="assets/images/redhat.png" alt="Red Hat" loading="lazy"></div>
+          <p><b>Red Hat</b> is an American multinational software company providing open-source software products to the enterprise community. Founded in 1993, Red Hat has its corporate headquarters in Raleigh, North Carolina, with satellite offices worldwide. Red Hat has become associated to a large extent with its enterprise operating system Red Hat Enterprise Linux and with the acquisition of open-source enterprise middleware vendor JBoss. Red Hat also offers Red Hat Enterprise Virtualization (RHEV), an enterprise virtualization product. Red Hat provides storage, operating system platforms, middleware, applications, management products, and support, training, and consulting services. <a href="https://www.redhat.com/">www.redhat.com</a>.</p>
+        </article>
+        <article class="partner">
+          <div><img src="assets/images/hw_logo_green_black.png" alt="Hortonworks" loading="lazy"></div>
+          <p><b>Hortonworks</b> is the only 100-percent open source software provider to develop, distribute and support an Apache Hadoop platform explicitly architected, built and tested for enterprise-grade deployments. Developed by the original architects, builders and operators of Hadoop, Hortonworks stewards the core and delivers the critical services required by the enterprise to reliably and effectively run Hadoop at scale. Our distribution, Hortonworks Data Platform, provides an open and stable foundation for enterprises and a growing ecosystem to build and deploy big data solutions. Hortonworks also provides unmatched technical support, training and certification programs. For more information and to try it out at no cost, download the Hortonworks Sandbox at <a href="http://www.hortonworks.com/sandbox">www.hortonworks.com/sandbox</a>.</p>
+        </article>
+        <article class="partner">
+          <div><img src="assets/images/rb3.png" alt="RayBond Trading+" loading="lazy"></div>
+          <p><b>RayBond Trading+</b> a division of RayBond Trading GmbH in Germany. Vast experience and knowledge of international trade operations and foreign business development. 
+Service available in English, Japanese, German. Their expertise is to trade European goods and services to Asian countries.</p>
+        </article>
+      </div>
+    </section>
+    <section id="contact" class="home-section">
+      <div class="container">
+        <header class="section-heading"><h2>Get in touch</h2><span class="chevron" aria-hidden="true"></span></header>
+        <h3 class="contact-heading">Sales Austria: <a href="tel:+43720512481">+43 720 512481</a></h3>
+        <hr class="divider">
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <a class="circle" href="#intro" aria-label="Back to top"><span class="chevron double-chevron up" aria-hidden="true"></span></a>
+      <p>©Copyright 2008 - South Value. All rights reserved. FR</p>
+    </div>
+  </footer>
+  <script>
+    // Native links and all content also work without JavaScript.
+    document.documentElement.classList.add('js');
+    const nav = document.querySelector('.site-nav');
+    const menu = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+    const anchors = [...links.querySelectorAll('a[href^="#"]')];
+    const sections = anchors.map(link => document.querySelector(link.hash));
+    menu.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+    });
+    nav.addEventListener('click', event => {
+      if (!event.target.closest('a')) return;
+      links.classList.remove('open');
+      menu.setAttribute('aria-expanded', 'false');
+    });
+    nav.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      links.classList.remove('open');
+      menu.setAttribute('aria-expanded', 'false');
+      menu.focus();
+    });
+    function updateNavigation() {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+      let active = 0;
+      sections.forEach((section, index) => { if (section.getBoundingClientRect().top <= 80) active = index; });
+      anchors.forEach((link, index) => {
+        if (index === active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    window.addEventListener('scroll', updateNavigation, { passive: true });
+    window.addEventListener('resize', updateNavigation);
+    updateNavigation();
+  </script>
+</body>
+</html>
