@@ -30,7 +30,7 @@ Repository: [south-dotcom/southvalue.com](https://github.com/south-dotcom/southv
 
 GitHub Pages is enabled from **main → /docs**. The first deployment succeeded and the live GitHub-address page was checked, including all images, fonts, navigation, and the absence of external CSS/JS libraries. **www.southvalue.com** is saved as the custom domain, and `docs/CNAME` matches it.
 
-**Remaining: update the domain's OVH DNS, wait for GitHub's DNS check and certificate, then enable Enforce HTTPS in the repository's Pages settings.** Until DNS changes, the custom domain still serves the old host. The GitHub-address URL may redirect to that custom domain.
+**DNS cutover verified on 28 October 2026.** Both OVH authoritative servers, Google DNS, and Cloudflare DNS return the GitHub Pages A records and the correct `www` CNAME. The GitHub host serves the exact cleaned page, its images and fonts, and redirects the bare domain to `www`. **Remaining: GitHub is provisioning the TLS certificate; Enforce HTTPS is disabled until issuance completes.** Some DNS caches may temporarily retain the old host. The GitHub-address URL redirects to the custom domain.
 
 In OVH's DNS zone for `southvalue.com`, replace the current apex A record `51.15.191.141` with the four A records below. Change the current `www` CNAME target from `southvalue.com.` to `south-dotcom.github.io.`. For root A records, leave OVH's subdomain field empty. Keep nameservers `dns109.ovh.net` and `ns109.ovh.net`.
 
@@ -55,4 +55,4 @@ Official instructions checked on 28 October 2026:
 
 ## Validation
 
-Desktop layout and 390-pixel mobile layout were inspected in a browser. All eight inline images and the hero background load locally. The mobile menu opens and closes after selecting Contact; all section anchors have matching targets. There are no external stylesheets, scripts, or font requests. The first GitHub Pages deployment also passed browser checks; DNS cutover and custom-domain HTTPS remain pending.
+Desktop layout and 390-pixel mobile layout were inspected in a browser. All eight inline images and the hero background load locally. The mobile menu opens and closes after selecting Contact; all section anchors have matching targets. There are no external stylesheets, scripts, or font requests. The first GitHub Pages deployment also passed browser checks; DNS cutover is verified; custom-domain HTTPS certificate issuance remains pending.
